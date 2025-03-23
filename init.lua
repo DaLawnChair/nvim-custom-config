@@ -39,19 +39,20 @@ end)
 
 vim.opt.relativenumber=true
 
-
+-- saving the visual blockwise selector (must be done before pasting
+vim.keymap.set({'n'}, '<leader><C-v>', '<C-v>')
+vim.keymap.set({'v'}, '<leader><C-v>', '<C-v>')
+vim.keymap.set({'i'}, '<leader><C-v>', '<C-v>')
 
 -- Copying to system clipboard
 -- From current cursor position to EOL (normal mode)
 vim.keymap.set({'n'}, '<C-c>', '"+y$')
--- Current selection (visual mode)
 vim.keymap.set({'v'}, '<C-c>', '"+y$')
 
 -- Pasting to system clipboard
 -- From current cursor position (normal mode)
 vim.keymap.set({'n'}, '<C-v>', '"+p$')
--- Current selection (visual mode)
-vim.keymap.set({'v'}, '<C-v>', '"+p')
+vim.keymap.set({'v'}, '<C-v>', '"+p$')
 
 -- Map CTLR-q and CTLR-e as moving to prev and next word respectively in every mode
 -- From current cursor position to EOL (normal mode)
