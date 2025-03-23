@@ -10,6 +10,12 @@
 3) save the file 
 4) run `:MasonInstallAll` inside a Nvim terminal 
 
+# Adding new keymaps
+1) open `init.lua`
+2) add a new entry of the form `vim.keymap.set({MODE(s)}, 'KEYPRESSES', '"ACTION')`
+3) restart all Nvim terminal instances
+
+The new keymaps should be loaded in and available to run!
 # Credits
 
 1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
