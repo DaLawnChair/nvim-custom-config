@@ -15,6 +15,9 @@
 2) add a new entry of the form `vim.keymap.set({MODE(s)}, 'KEYPRESSES', '"ACTION')`
 3) restart all Nvim terminal instances
 
+# Noted installations:
+`sudo apt install g++-12` For Clang and GCC
+
 The new keymaps should be loaded in and available to run!
 # Credits
 

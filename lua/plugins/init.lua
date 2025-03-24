@@ -22,4 +22,26 @@ return {
   -- 		},
   -- 	},
   -- },
+  
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "configs.plugins.dap"
+    end,
+  },
+  
+  {
+  "williamboman/mason.nvim",
+  opts = {
+  	ensure_installed = {
+  		"pyright",
+      "python-lsp-server"
+  	}
+  },
+  
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
+  }
 }
