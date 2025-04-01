@@ -109,7 +109,7 @@ require('lualine').setup {
 -- saving the visual blockwise selector (must be done before pasting
 vim.keymap.set({'n'}, '<leader><C-v>', '<C-v>')
 vim.keymap.set({'v'}, '<leader><C-v>', '<C-v>')
-vim.keymap.set({'i'}, '<leader><C-v>', '<C-v>')
+-- vim.keymap.set({'i'}, '<leader><C-v>', '<C-v>')
 
 -- Copying to system clipboard
 -- From current cursor position to EOL (normal mode)
