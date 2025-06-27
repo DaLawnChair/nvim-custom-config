@@ -35,7 +35,8 @@ return {
   opts = {
   	ensure_installed = {
   		"pyright",
-      "python-lsp-server"
+      "python-lsp-server",
+      "clangd"
   	}
   },
   

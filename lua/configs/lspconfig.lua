@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "clangd", "python-lsp-server" } -- "pyright", "clang-format", "html", "cssls" 
+local servers = { "clangd", "pylsp" } -- "pyright", "html", "cssls" 
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -15,6 +15,15 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+return {
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "custom.configs.lspconfig"
+    end,
+  },
+}
 
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {

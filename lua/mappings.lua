@@ -30,6 +30,14 @@ M.dap = {
 
 --map('n', '<leader>dr', function() require('dap').toggle_breakpoint() end, {desc = "Add breakpoint at line"})
 
-return M
 
+-- [][] Doesn't work
+-- shortcut for compiling and running C++ files as object code (doesn't do )
+M.compile = {
+  n = {
+    ["<leader>pp"] = { ":w<CR>:!g++ % -o %:r && ./%:r<CR>", "Compile & Run C++ file" },
+  },
+}
+
+return M
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
