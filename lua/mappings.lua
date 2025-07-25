@@ -27,9 +27,7 @@ M.dap = {
 --map('n', '<leader>db', function() require('dap').toggle_breakpoint() end, {desc = "Add breakpoint at line"}, {noremap=true})
 --map('n', '<leader>dr', function() require('dap').toggle_breakpoint() end, {desc = "Add breakpoint at line"}, {noremap=true})
 --map('n', '<C-b>', function() require('dap').toggle_breakpoint() end, {desc = "Add breakpoint at line"})
-
 --map('n', '<leader>dr', function() require('dap').toggle_breakpoint() end, {desc = "Add breakpoint at line"})
-
 
 -- [][] Doesn't work
 -- shortcut for compiling and running C++ files as object code (doesn't do )

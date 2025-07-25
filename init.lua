@@ -40,6 +40,12 @@ end)
 
 vim.opt.relativenumber=true
 
+-- set the tab spacing globally to 4 spaces
+vim.opt.tabstop = 4       -- Number of visual spaces per TAB
+vim.opt.shiftwidth = 4    -- Number of spaces used for each indentation level
+vim.opt.expandtab = true  -- Use spaces instead of tabs
+vim.opt.smartindent = true
+
 -- for percentage of the file we've scrolled
 -- Bubbles config for lualine
 -- Author: lokesh-krishna
@@ -136,6 +142,18 @@ vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j', t_opts)
 vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k', t_opts)
 vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l', t_opts)
 
+-- Remaps CTLR-4 to $ in the 3 modes, for easier nave with other remappings
+vim.keymap.set({ "n","i", "v" }, "<C-\\>", function()
+  local mode = vim.api.nvim_get_mode().mode
+  -- Go to normal mode and press $
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>$", true, false, true), "n", true)
+  -- Return to original mode
+  if mode == "i" then
+    vim.api.nvim_feedkeys("a", "n", true)  -- back to insert
+  elseif mode == "v" then
+    vim.api.nvim_feedkeys("gv", "n", true)  -- reselect visual
+  end
+end, { noremap = true, silent = true })
 
 require "plugins"
 
