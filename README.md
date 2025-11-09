@@ -1,9 +1,12 @@
 
 # Installation
+
 Download nvim
 `sudo apt-get install neovim`
+
 Clone nvchad:
 `git clone https://github.com/NvChad/starter ~/.config/nvim && nvim`
+
 Update with own config:
 ``` bash
 cd .config
