@@ -155,5 +155,38 @@ vim.keymap.set({ "n","i", "v" }, "<C-\\>", function()
   end
 end, { noremap = true, silent = true })
 
+
+-- Remove whitespace from LSP 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
+  if not result then return end
+
+  -- Filter out whitespace-related diagnostics
+  result.diagnostics = vim.tbl_filter(function(diagnostic)
+    return not diagnostic.message:lower():match("trailing whitespace")
+        and not diagnostic.message:lower():match("indentation")
+        and not diagnostic.message:lower():match("whitespace")
+  end, result.diagnostics)
+
+  vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+end
+
+
+-- 01/01/2026
+-- Aim is to allow me to clear terminal with CTLR+SHIFT+l
+-- this isn't the same as normal terminals as this will just do clear<enter>, so it won't clear the screen during an active process
+vim.keymap.set('t', '<C-L>', function()
+  -- vim.fn.feedkeys("clear", 't')
+  local keys = vim.api.nvim_replace_termcodes("clear<CR>", true, false, true)
+  vim.fn.feedkeys(keys, 't')
+  
+  local sb = vim.bo.scrollback
+  vim.bo.scrollback = 1
+  vim.bo.scrollback = sb
+end, { desc = "Clear terminal screen and scrollback" })
+
+
+
+
+
 require "plugins"
 
