@@ -1,3 +1,22 @@
+
+# Installation
+
+Download nvim
+`sudo apt-get install neovim`
+
+Clone nvchad:
+`git clone https://github.com/NvChad/starter ~/.config/nvim && nvim`
+
+Update with own config:
+``` bash
+cd .config
+mv nvim nvimtemp # temporarily change the config
+git clone https://github.com/DaLawnChair/nvim-custom-config.git
+mv nvim-custom-config nvim # 
+nvim
+```
+
+
 **This repo is supposed to used as config by NvChad users!**
 
 - The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
