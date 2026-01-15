@@ -184,9 +184,13 @@ vim.keymap.set('t', '<C-L>', function()
   vim.bo.scrollback = sb
 end, { desc = "Clear terminal screen and scrollback" })
 
-
-
+-- 15/01/2026
+-- enable ctrl+backspace to delete a word in insert mode. 
+-- This is broken by default not sure why on Neovim.
+-- Doesn't work for normal and visual mode since they register that as the terminal ^W input, and may
+-- break it if changed
+-- ctrl backspace is registered as the keybind of C-H
+vim.keymap.set({'i'}, '<C-H>', '<C-w>')
 
 
 require "plugins"
-
