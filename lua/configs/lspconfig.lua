@@ -35,7 +35,8 @@ end
 -- lsps with default config
 for _, lsp in ipairs(servers) do
 
-  if lsp=="clangd" then 
+  if lsp=="clangd" then
+    -- Source for clangd default c++20 config https://www.reddit.com/r/neovim/comments/19f7s3r/comment/kjis1b6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
     lspconfig[lsp].setup {
         on_attach = custom_on_attach,
         on_init = nvlsp.on_init,
