@@ -34,11 +34,23 @@ end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = custom_on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
+
+  if lsp=="clangd" then 
+    lspconfig[lsp].setup {
+        on_attach = custom_on_attach,
+        on_init = nvlsp.on_init,
+        capabilities = nvlsp.capabilities,
+        init_options = {
+            fallbackFlags = {'--std=c++20'}
+          },
+      }
+  else
+      lspconfig[lsp].setup {
+        on_attach = custom_on_attach,
+        on_init = nvlsp.on_init,
+        capabilities = nvlsp.capabilities,
+      }
+  end
 end
 
 return {
