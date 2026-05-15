@@ -193,4 +193,9 @@ end, { desc = "Clear terminal screen and scrollback" })
 vim.keymap.set({'i'}, '<C-H>', '<C-w>')
 
 
+-- 15/05/2026
+-- use gt to enable tab change (`g <tab>`)
+vim.keymap.set('n', 'gt', 'g<tab>')
+
+
 require "plugins"
