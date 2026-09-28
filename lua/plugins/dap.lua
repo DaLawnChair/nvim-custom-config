@@ -51,6 +51,9 @@ return {
       },
       config = function()
         require("mason-nvim-dap").setup({
+          ensure_installed = {
+            "codelldb",
+          },
 
           automatic_setup = true,
 
@@ -98,7 +101,45 @@ return {
       opts = {},
     },
   },
-  config = function() end,
+
+  config = function()
+    local dap = require("dap")
+
+    -- gdb-12 doesn't support for dap
+    -- dap.adapters.gdb = {
+    --   type = "executable",
+    --   command = "gdb",
+    --   args = {
+    --     "--interpreter=dap",
+    --     "--eval-command",
+    --     "set print pretty on",
+    --   },
+    -- }
+    --
+
+    dap.configurations.cpp = {
+      {
+        name = "Launch executable",
+        type = "codelldb",
+        request = "launch",
+
+        program = function()
+          return vim.fn.input(
+            "Path to executable: ",
+            vim.fn.getcwd() .. "/",
+            "file"
+          )
+        end,
+
+        cwd = "${workspaceFolder}",
+        stopAtBeginningOfMainSubprogram = false,
+        stopOnEntry = false,
+
+      },
+    }
+
+    dap.configurations.c = dap.configurations.cpp
+  end,
 }
 
 -- ensure that languages are used
